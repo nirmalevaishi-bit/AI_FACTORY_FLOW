@@ -1,39 +1,66 @@
-**Architectural Decision Record (ADR-001)** :
+# Decision Log: AI-Powered Factory Flow & Queue Optimizer
+
+This decision log records the architectural, technical, and tool-selection decisions made throughout the development of the **AI Factory Flow** project. Each entry details the decision context, alternatives considered, and the rationale behind the final choice.
 
 ---
 
-### What is an Architectural Decision Record (ADR)?
+## Decision 1: Use of Synthetic Data Generation over Live IoT Data
 
-An ADR is a short, formal document used in engineering projects to record an important technical choice. Instead of just picking a tool randomly, your team writes down *why* you chose it, the problem it solves, and what benefits it brings.
+* **Date:** August 2026
+* **Status:** Accepted
+* **Context:** Real-time operational data from physical industrial IoT (IIoT) sensors or PLCs across multi-stage bearing factories (`Lathe_M1`, `Grinding_M2`, `Polishing_M3`, `Assembly_M4`) was unavailable for immediate live integration.
+* **Alternatives Considered:**
+1. Scraping public industrial datasets (often lack specific multi-machine queue metrics).
+2. Building a custom Python script using `numpy` and `pandas` to generate realistic synthetic factory event logs.
+
+
+* **Decision:** We chose to build a **custom synthetic data generator script** (`scripts/generate_large_dataset.py`).
+* **Rationale:** Generating synthetic data allowed us to control feature distributions (such as queue lengths, machine statuses, and shift anomalies) specifically tailored to bearing manufacturing workflows while ensuring full reproducibility via fixed random seeding (`np.random.seed(42)`).
 
 ---
 
-### Breakdown of ADR-001: Selection of Streamlit for Dashboard UI
+## Decision 2: Choosing Python as the Core Programming Language
 
-* **Status: Accepted**
+* **Date:** August 2026
+* **Status:** Accepted
+* **Context:** The project requires heavy data manipulation, machine learning modeling, and rapid web application prototyping.
+* **Alternatives Considered:** R, Java, or C++.
+* **Decision:** **Python** was chosen as the sole programming language.
+* **Rationale:** Python offers an unmatched ecosystem for data science and MLOps, including industry-standard libraries like `pandas`, `numpy`, `scikit-learn`, and `streamlit`.
 
-* **What it means:** Your team has officially agreed on this choice, and it is locked in as part of your project design.
+---
 
+## Decision 3: Selecting Random Forest for Model Training
 
-
-
-* **Context:** *We need a rapid, interactive dashboard frontend to visualize factory machine layouts, queue charts, and AI recommendations without building a complex full-stack web app*.
-
-
-* **Explanation:** Your AI model needs a user interface (frontend) so that factory managers can actually look at the data, see machine statuses, and read AI recommendations. Normally, building a web app requires complex tools like HTML, CSS, JavaScript, and backend frameworks. Since your team only has 4 weeks, you need something much faster and easier.
-
-
-
-
-* **Decision:** *Use Streamlit for the user interface*.
-
-
-* **Explanation:** You decided to use **Streamlit**, which is a Python library. It allows you to build interactive web dashboards entirely using Python code, eliminating the need to learn complicated web development languages.
-
-
-
-
-* **Consequences:** *Enables fast Python-based integration and local deployment within our 4-week timeline*.
+* **Date:** August 2026
+* **Status:** Accepted
+* **Context:** We need a robust machine learning model capable of handling tabular operational data (numerical and categorical mixes like machine status, wait times, and temperatures) to predict factory flow efficiency and bottlenecks.
+* **Alternatives Considered:** Logistic Regression, Support Vector Machines (SVM), and Deep Learning (Neural Networks).
+* **Decision:** **Random Forest** (ensemble tree-based learning).
+* **Rationale:**
+* Random Forest handles non-linear relationships and interactions between features (e.g., how temperature combined with queue length affects processing time) exceptionally well.
+* It requires minimal data normalization compared to SVMs or Neural Networks.
+* It is less prone to overfitting on medium-sized tabular datasets and provides built-in feature importance metrics for explainability.
 
 
-* **Explanation:** Because Streamlit is built for Python, it connects directly to your machine learning models very easily. This ensures your team can successfully build, test, and run the dashboard locally on your computers within your strict 1-month project deadline.
+
+---
+
+## Decision 4: Choosing Streamlit for Web Application Deployment
+
+* **Date:** August 2026
+* **Status:** Accepted
+* **Context:** The project requires an interactive web dashboard for factory supervisors and engineers to view analytics and interact with model predictions.
+* **Alternatives Considered:** Full-stack web frameworks (Flask + HTML/CSS/JS) or enterprise dashboards (Dash/Django).
+* **Decision:** **Streamlit**.
+* **Rationale:** Streamlit allows data scientists to build and deploy interactive web applications entirely in pure Python with minimal boilerplate code, making it ideal for rapid prototyping, local demonstration, and cloud deployment.
+
+---
+
+## Decision 5: Modular Project Directory Structure
+
+* **Date:** August 2026
+* **Status:** Accepted
+* **Context:** As the codebase grows (data scripts, model training, web apps, configs), flat directory structures quickly become unmaintainable.
+* **Decision:** Adopt a modular MLOps directory structure separating `data/` (raw/processed), `src/` (data cleaning, modeling), `artifacts/` (saved models), `scripts/`, and `docs/`.
+* **Rationale:** Ensures clean separation of concerns, improves code maintainability, and aligns with standard software engineering and MLOps best practices.
