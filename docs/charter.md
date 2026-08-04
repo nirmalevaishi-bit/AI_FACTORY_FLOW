@@ -2,7 +2,7 @@
 
 ---
 
-### 3. Core Problem Statement
+###  Core Problem Statement
 
 * **What it says:** *In bearing manufacturing factories, production slows down because materials wait too long between machines, queues become overloaded, and managers cannot identify bottlenecks until delays occur*.
 

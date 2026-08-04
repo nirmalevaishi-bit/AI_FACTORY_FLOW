@@ -4,11 +4,11 @@ This decision log records the architectural, technical, and tool-selection decis
 
 ---
 
-## Decision 1: Use of Synthetic Data Generation over Live IoT Data
+## Decision 1: Use of Synthetic Data Generation over factory  Data
 
 * **Date:** August 2026
 * **Status:** Accepted
-* **Context:** Real-time operational data from physical industrial IoT (IIoT) sensors or PLCs across multi-stage bearing factories (`Lathe_M1`, `Grinding_M2`, `Polishing_M3`, `Assembly_M4`) was unavailable for immediate live integration.
+* **Context:** Real-time operational data from physical industrial dataset or PLCs across multi-stage bearing factories (`Lathe_M1`, `Grinding_M2`, `Polishing_M3`, `Assembly_M4`) was unavailable for immediate  integration.
 * **Alternatives Considered:**
 1. Scraping public industrial datasets (often lack specific multi-machine queue metrics).
 2. Building a custom Python script using `numpy` and `pandas` to generate realistic synthetic factory event logs.
