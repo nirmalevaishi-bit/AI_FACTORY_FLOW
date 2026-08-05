@@ -1,4 +1,4 @@
-# Project Charter: AI-Powered Factory Flow & Queue Optimizer for Bearing Manufacturing
+# Project Charter:  AI-Based Smart Factory Flow Optimizer Using Machine Learning
 
 ---
 
