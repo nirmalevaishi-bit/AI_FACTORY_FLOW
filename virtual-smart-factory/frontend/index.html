@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bearing Factory Manager Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>🏭 Bearing Manufacturing Factory</h1>
+        <p>AI Factory Flow Monitoring System</p>
+    </header>
+
+    <main>
+
+        <section class="kpis">
+
+            <div class="card">
+                <h3>Total Machines</h3>
+                <h2 id="totalMachines">4</h2>
+            </div>
+
+            <div class="card">
+                <h3>Running Machines</h3>
+                <h2 id="runningMachines">0</h2>
+            </div>
+
+            <div class="card">
+                <h3>Machines Down</h3>
+                <h2 id="downMachines">0</h2>
+            </div>
+
+            <div class="card">
+                <h3>Bottlenecks</h3>
+                <h2 id="bottlenecks">0</h2>
+            </div>
+
+        </section>
+
+
+        <section class="factory">
+
+            <h2>🏭 Factory Flow</h2>
+
+            <div class="flow">
+
+                <div class="station">
+                    📦
+                    <b>Raw Material</b>
+                </div>
+
+                <div class="arrow">➡️</div>
+
+                <div class="machine" id="Lathe_M1">
+                    ⚙️
+                    <b>Lathe M1</b>
+                    <span>Loading...</span>
+                </div>
+
+                <div class="arrow">➡️</div>
+
+                <div class="machine" id="Grinding_M2">
+                    ⚙️
+                    <b>Grinding M2</b>
+                    <span>Loading...</span>
+                </div>
+
+                <div class="arrow">➡️</div>
+
+                <div class="machine" id="Polishing_M3">
+                    ⚙️
+                    <b>Polishing M3</b>
+                    <span>Loading...</span>
+                </div>
+
+                <div class="arrow">➡️</div>
+
+                <div class="machine" id="Assembly_M4">
+                    ⚙️
+                    <b>Assembly M4</b>
+                    <span>Loading...</span>
+                </div>
+
+                <div class="arrow">➡️</div>
+
+                <div class="station">
+                    📦
+                    <b>Finished Bearing</b>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="details">
+
+            <div class="panel">
+
+                <h2>Machine Details</h2>
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Machine</th>
+                            <th>Status</th>
+                            <th>Temperature</th>
+                            <th>Queue</th>
+                            <th>Load</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="machineTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h2>🚨 Manager Alerts</h2>
+                <div class="panel">
+    <h2>🤖 AI Bottleneck Prediction</h2>
+
+    <div id="aiPrediction">
+        Checking factory...
+    </div>
+</div>
+
+                <div id="alerts">
+                    <p>Loading factory data...</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
