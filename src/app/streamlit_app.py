@@ -12,11 +12,10 @@ from factory_layout import render_factory_layout
 # PATHS
 # =========================================================
 
-MODEL_WAIT_PATH = "artifacts/wait_time_model.joblib"
-MODEL_RECOMMEND_PATH = "artifacts/machine_recommender_model.joblib"
+MODEL_WAIT_PATH = r"E:\AI_factory_flow\artifacts\wait_time_model.joblib"
+MODEL_RECOMMEND_PATH = r"E:\AI_factory_flow\artifacts\machine_recommender_model.joblib"
 
-DATA_PATH = "data/processed/cleaned_factory_flow_data.csv"
-
+DATA_PATH = r"E:\AI_factory_flow\data\processed\cleaned_factory_flow_data.csv"
 
 # =========================================================
 # FEATURES
